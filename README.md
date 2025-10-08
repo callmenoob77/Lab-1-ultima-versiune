@@ -1,4 +1,11 @@
-Buna ziua,
+# Tema Laborator 1 – Introducere în Realitate Mixtă
 
-Aceasta este tema de la laboratorul 1 din cadrul materiei "Introducere in Realitate Mixta".
-Tema a fost realizata de Mario Tescovschi si Gabriel Dima, grupa 3B1.
+**Bună ziua,**
+
+Aceasta este tema realizată pentru **Laboratorul 1** din cadrul materiei *Introducere în Realitate Mixtă*.  
+Proiectul a fost realizat de:
+
+- **Mario Tescovschi**  
+- **Gabriel Dima**  
+
+Grupa: **3B1**
