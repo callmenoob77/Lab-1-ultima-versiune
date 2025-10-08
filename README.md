@@ -4,7 +4,8 @@ Aceasta este tema realizata pentru **Laboratorul 1** din cadrul materiei *Introd
 
 Proiectul a fost realizat de:
 - **Mario Tescovschi**  
-- **Gabriel Dima**  
+- **Gabriel Dima**
+
 Grupa: **3B1**
 
 > Observatie: Pachetul *Vuforia Engine* nu a fost adaugat in repository deoarece depaseste limita maxima.  
