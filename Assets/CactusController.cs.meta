@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d865ef2c5ce1cd94380b12bbfaf88ae8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - primul: {fileID: 100052, guid: 68d8f3eae01c5744b996aab3358db0a0, type: 3}
+  - aldoilea: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="irmastronaut" size="0.120000 0.204812" />
+    <ImageTarget name="irmcard" size="0.100000 0.061834" />
+  </Tracking>
+</QCARConfig>
