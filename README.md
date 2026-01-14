@@ -11,9 +11,8 @@ Aplicație web pentru generarea și evaluarea automată a întrebărilor din dom
 3. [Configurare Baza de Date](#configurare-baza-de-date)
 4. [Rulare](#rulare)
 5. [Ghid de Utilizare](#ghid-de-utilizare)
-6. [Structura Proiectului](#structura-proiectului)
-7. [Funcționalități](#funcționalități)
-8. [Tehnologii Utilizate](#tehnologii-utilizate)
+6. [Funcționalități](#funcționalități)
+7. [Tehnologii Utilizate](#tehnologii-utilizate)
 
 ---
 
