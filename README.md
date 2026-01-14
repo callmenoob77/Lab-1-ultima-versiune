@@ -10,9 +10,9 @@ Aplicație web pentru generarea și evaluarea automată a întrebărilor din dom
 2. [Instalare](#instalare)
 3. [Configurare Baza de Date](#configurare-baza-de-date)
 4. [Rulare](#rulare)
-5. [Structura Proiectului](#structura-proiectului)
-6. [Funcționalități](#funcționalități)
-7. [API Endpoints](#api-endpoints)
+5. [Ghid de Utilizare](#ghid-de-utilizare)
+6. [Structura Proiectului](#structura-proiectului)
+7. [Funcționalități](#funcționalități)
 8. [Tehnologii Utilizate](#tehnologii-utilizate)
 
 ---
@@ -86,11 +86,13 @@ CREATE DATABASE smartest_ai;
 
 ### 2. Configurare conexiune
 
-Editați fișierul `app/database.py` și actualizați URL-ul de conexiune:
+Editați fișierul `app/database.py` și actualizați URL-ul de conexiune conform setărilor locale:
 
 ```python
-DATABASE_URL = "postgresql://username:password@localhost:5432/smartest_ai"
+DATABASE_URL = "postgresql://postgres:parola_ta@localhost/Proiect-AI"
 ```
+
+Formatul: `postgresql://utilizator:parola@host/nume_baza_de_date`
 
 ### 3. Adăugare tipuri de întrebări în baza de date
 
@@ -144,7 +146,68 @@ Frontend-ul va porni pe `http://localhost:3000`
 
 Accesați în browser:
 - Frontend: http://localhost:3000
-- API Documentation (Swagger): http://localhost:8000/docs
+
+---
+
+## Ghid de Utilizare
+
+După accesarea aplicației în browser, utilizatorul este întâmpinat cu pagina principală.
+
+### Pagina Principală
+
+Pe pagina principală există două moduri de generare a întrebărilor:
+
+**1. Întrebare generată** (selectat implicit)
+- Sistemul generează automat o întrebare aleatorie din capitolele disponibile
+- Utilizatorul poate filtra după capitol și dificultate
+
+**2. Întrebare pe pattern**
+- Utilizatorul specifică manual parametrii întrebării
+- Util pentru exersarea unui anumit tip de problemă
+
+### Selectoare disponibile
+
+| Element | Descriere |
+|---------|----------|
+| Alege capitolul | Filtrare după: Toate capitolele, Strategii algoritmice, Algoritmi de căutare și CSP, Teoria Jocurilor |
+| Dificultate | Ușor (instanțe mici), Mediu (standard), Greu (complex) |
+| Răspuns Multiplu | Întrebare cu 4 variante de răspuns |
+| Răspuns Text | Întrebare cu răspuns liber evaluat prin NLP |
+| Creează Test | Generează un set de mai multe întrebări |
+
+### Flux de lucru pentru întrebări individuale
+
+1. Selectați capitolul dorit (opțional)
+2. Selectați dificultatea
+3. Alegeți tipul de răspuns (Multiplu sau Text)
+4. Apăsați butonul **Generează întrebare**
+5. Citiți enunțul și vizualizările asociate (arbori, matrici)
+6. Selectați răspunsul sau scrieți în câmpul text
+7. Apăsați **Verifică răspunsul**
+8. Consultați feedback-ul și soluția de referință
+9. Apăsați unul din butoanele de generare pentru o nouă întrebare
+
+### Flux de lucru pentru Mod Test
+
+1. Selectați **Creează Test** de pe pagina principală
+2. Alegeți numărul de întrebări (1-20)
+3. Selectați modul: **Practice** (fără limită de timp) sau **Examen** (2 minute/întrebare)
+4. Apăsați **Începe Testul**
+5. Navigați între întrebări folosind butoanele Anterior/Următoarea sau indicatorii numerotați
+6. La final, apăsați **Finalizează Testul**
+7. Consultați rezultatele detaliate pentru fiecare întrebare
+
+### Întrebări pe Pattern
+
+Pentru modul **Întrebare pe pattern**, selectați tipul și completați câmpurile:
+
+| Tip Pattern | Câmpuri necesare |
+|-------------|------------------|
+| Teorie | Nume strategie (ex: A* Search) |
+| Strategie | Nume problemă, Instanță |
+| CSP | Variază în funcție de subtip (FC, MRV, AC3) |
+| Minimax | Fără câmpuri - generare automată |
+| Nash | Fără câmpuri - generare automată |
 
 ---
 
@@ -163,10 +226,6 @@ Proiect-AI/
 │   │   └── csp_solver.py         # Solver CSP
 │   ├── models/                   # Modele SQLAlchemy
 │   ├── routers/                  # API endpoints
-│   │   ├── generator_api.py      # Endpoint generare întrebări
-│   │   ├── answer_api.py         # Endpoint evaluare răspunsuri
-│   │   ├── test_api.py           # Endpoint mod test
-│   │   └── custom_question_api.py # Endpoint întrebări personalizate
 │   ├── schemas/                  # Scheme Pydantic
 │   ├── database.py               # Configurare DB
 │   └── main.py                   # Entry point aplicație
@@ -208,55 +267,6 @@ Sistemul folosește o abordare hibridă pentru evaluarea răspunsurilor text:
 - 40% - Potrivire cuvinte cheie
 
 Model NLP utilizat: `paraphrase-multilingual-MiniLM-L12-v2` (suport limba română)
-
----
-
-## API Endpoints
-
-### Generare Întrebări
-
-```
-POST /api/generate/strategy
-Content-Type: application/json
-
-{
-  "answer_type": "multiple" | "text",
-  "difficulty": 1 | 2 | 3,
-  "chapter_filter": "Strategii algoritmice" | "Algoritmi de cautare si CSP" | "Teoria Jocurilor"
-}
-```
-
-### Evaluare Răspuns
-
-```
-POST /api/answer/submit
-Content-Type: application/json
-
-{
-  "question_id": 123,
-  "user_answer": "Răspunsul utilizatorului"
-}
-```
-
-### Generare Test
-
-```
-POST /api/test/generate?num_questions=5&difficulty=2
-```
-
-### Trimitere Test
-
-```
-POST /api/test/submit
-Content-Type: application/json
-
-{
-  "1": "Răspuns întrebare 1",
-  "2": "Răspuns întrebare 2"
-}
-```
-
-Documentație completă API disponibilă la: http://localhost:8000/docs
 
 ---
 
