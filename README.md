@@ -233,8 +233,6 @@ Sistemul folosește o abordare hibridă pentru evaluarea răspunsurilor text:
 - 60% - Similaritate semantică (Sentence Transformers)
 - 40% - Potrivire cuvinte cheie
 
-Model NLP utilizat: `paraphrase-multilingual-MiniLM-L12-v2` (suport limba română)
-
 ---
 
 ## Tehnologii Utilizate
